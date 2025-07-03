@@ -31,6 +31,11 @@ WebSocketClient::~WebSocketClient() {
     //log_debug("destructor exited");
 }
 
+// test function to return the module version
+std::string WebSocketClient::getVersion() {
+    return "WebSocketClient v1.0.0";
+}
+
 /**
  * \brief Parse and store the WebSocket endpoint components from a URL.
  *
@@ -118,6 +123,8 @@ void WebSocketClient::connect() {
         }
 
         ssl = SSL_new(ctx);
+
+        SSL_set_tlsext_host_name(ssl, host.c_str());
 
         if (!ssl) {
             SSL_CTX_free(ctx);

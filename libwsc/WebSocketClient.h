@@ -117,6 +117,7 @@ public:
     WebSocketClient(WebSocketClient&&) noexcept = default;
     WebSocketClient& operator=(WebSocketClient&&) noexcept = default;
 
+    std::string getVersion();
     void connect();
     void disconnect();
     bool isConnected();
